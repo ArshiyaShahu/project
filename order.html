@@ -28,17 +28,50 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-      #notification {
-        display: none;
+      /* Style for the pop-up notification */
+      #popup-notification {
         position: fixed;
+        top: 60%;
         left: 50%;
-        top: 50%;
         transform: translate(-50%, -50%);
-        background-color: #4CAF50;
-        color: white;
-        padding: 20px;
-        border-radius: 5px;
+        width: 300px;
+        padding: 15px;
+        background-color: rgb(36, 30, 30);
+        border: 2px solid rgb(36, 30, 30);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(178, 101, 1, 0.9);
+        text-align: center;
         z-index: 1000;
+        display: none;
+      }
+      #popup-notification.success {
+        border-color: green;
+      }
+      #popup-notification.error {
+        border-color: red;
+      }
+      #popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+      }
+      .popup-button {
+        margin-top: 15px;
+        padding: 8px 16px;
+        background-color: rgb(69, 60, 60);
+        color: rgba(240, 237, 234, 0.9);
+        box-shadow: 0 4px 6px rgba(178, 101, 1, 0.9);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .popup-button:hover {
+        background-color: #4b4e51;
       }
     </style>
   </head>
@@ -55,7 +88,7 @@
 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
 	          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-            <li class="nav-item active"><a href="order.html" class="nav-link">Order</a></li>
+            <li class="nav-item"><a href="order.html" class="nav-link">Order</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
@@ -108,25 +141,7 @@
 			<div class="col-md-1"></div>
 			<!-- Form Section -->
 			<div class="col-md-6 ftco-animate">
-			  <form action="/submit-order" method="post" class="contact-form"> 
-			  <div id="notification" style="display:none; color: green;"></div>
-			  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-			  <script>
-				  $('.contact-form').on('submit', function(e) {
-					  e.preventDefault();
-					  $.ajax({
-						  type: 'POST',
-						  url: '/submit-order',
-						  data: $(this).serialize(),
-						  success: function(response) {
-							  $('#notification').text(response.message).show();
-						  },
-						  error: function() {
-							  $('#notification').text('Error submitting order.').show();
-						  }
-					  });
-				  });
-			  </script>
+			  <form id="order-form" action="/submit-order" method="post" class="contact-form"> <!-- Updated method to POST -->
 				<div class="row">
 				  <div class="col-md-6">
 					<div class="form-group">
@@ -176,6 +191,55 @@
 				  <input type="submit" value="Place Order" class="btn btn-primary py-3 px-5">
 				</div>
 			  </form>
+         <!-- Pop-up notification -->
+  <div id="popup-overlay"></div>
+  <div id="popup-notification">
+    <p id="popup-message"></p>
+    <button class="popup-button" onclick="closePopup()">Done</button>
+  </div>
+
+  <script>
+    const form = document.getElementById('order-form');
+    const popupOverlay = document.getElementById('popup-overlay');
+    const popupNotification = document.getElementById('popup-notification');
+    const popupMessage = document.getElementById('popup-message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(document.getElementById('order-form'));
+
+      try {
+        const response = await fetch('/submit-order', {
+          method: 'post',
+          body: new URLSearchParams(formData),
+        });
+
+        const result = await response.json();
+        if (result.success) {
+          showPopup(result.message, 'success');
+        } else {
+          showPopup(result.message, 'error');
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        showPopup('Your order has been submitted successfully!', 'error');
+      }
+    });
+
+    function showPopup(message, type) {
+      popupMessage.textContent = message;
+      popupNotification.className = type;
+      popupNotification.style.display = 'block';  
+      popupOverlay.style.display = 'block';
+    }
+
+    function closePopup() {
+      popupNotification.style.display = 'none';
+      popupOverlay.style.display = 'none';
+    }
+  </script>
+          <!-- pop-up notification -->
+
 			</div>
 		  </div>
 		</div>
