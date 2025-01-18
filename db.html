@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MongoDB Connection</title>
+  <script>
+    async function addItem(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+
+      const response = await fetch('/add-item', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name }),
+      });
+
+      if (response.ok) {
+        alert('Item added successfully!');
+        fetchItems();
+      } else {
+        alert('Failed to add item.');
+      }
+    }
+
+    async function fetchItems() {
+      const response = await fetch('/items');
+      const items = await response.json();
+      const itemList = document.getElementById('items');
+      itemList.innerHTML = '';
+      items.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item.name;
+        itemList.appendChild(li);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchItems);
+  </script>
+</head>
+<body>
+  <h1>MongoDB Connection Example</h1>
+  <form onsubmit="addItem(event)">
+    <input type="text" id="name" placeholder="Enter item name" required />
+    <button type="submit">Add Item</button>
+  </form>
+  <h2>Items:</h2>
+  <ul id="items"></ul>
+</body>
+</html>
