@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/magnific-popup.css">
 
     <link rel="stylesheet" href="css/aos.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="css/ionicons.min.css">
 
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
@@ -27,228 +27,196 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-      /* Style for the pop-up notification */
-      #popup-notification {
-        position: fixed;
-        top: 60%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 300px;
-        padding: 15px;
-        background-color: rgb(36, 30, 30);
-        border: 2px solid rgb(36, 30, 30);
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(178, 101, 1, 0.9);
-        text-align: center;
-        z-index: 1000;
-        display: none;
-      }
-      #popup-notification.success {
-        border-color: green;
-      }
-      #popup-notification.error {
-        border-color: red;
-      }
-      #popup-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 999;
-        display: none;
-      }
-      .popup-button {
-        margin-top: 15px;
-        padding: 8px 16px;
-        background-color: rgb(69, 60, 60);
-        color: rgba(240, 237, 234, 0.9);
-        box-shadow: 0 4px 6px rgba(178, 101, 1, 0.9);
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-      .popup-button:hover {
-        background-color: #4b4e51;
-      }
-    </style>
   </head>
   <body>
-  	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="home.html"><span class="flaticon-pizza-1 mr-1"></span>Pizza<br><small>Corner</small></a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span>
-	      </button>
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
-	          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="home.html"><span class="flaticon-pizza-1 mr-1"></span>Pizza<br><small>Corner</small></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
+            <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
             <li class="nav-item"><a href="order.html" class="nav-link">Order</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	        </ul>
-	      </div>
-		  </div>
-	  </nav>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <!-- END nav -->
 
     <section class="home-slider owl-carousel img" style="background-image: url(images/bg_1.jpg);">
 
       <div class="slider-item" style="background-image: url(images/bg_3.jpg);">
-      	<div class="overlay"></div>
+        <div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            	<h1 class="mb-3 mt-5 bread">Order Form</h1>
-	            <p class="breadcrumbs"><span class="mr-2"><a href="home.html">Home</a></span> <span>Order</span></p>
+              <h1 class="mb-3 mt-5 bread">Order Form</h1>
+              <p class="breadcrumbs"><span class="mr-2"><a href="home.html">Home</a></span> <span>Order</span></p>
             </div>
 
-          </div>
+
+</div>
         </div>
       </div>
     </section>
     
     <!-- -------Order Information ----- -->
-	<section class="ftco-section contact-section">
-		<div class="container mt-5">
-		  <div class="row block-9">
-			<!-- Title Section Centered -->
-			<div class="col-12 text-center mb-4">
-			  <h2 class="h4" style="font-size: 50px;">Pizza Order Form</h2>
-			</div>
-			<!-- Contact Info -->
-			<div class="col-md-4 contact-info ftco-animate">
-			  <div class="row">
-				<div class="col-md-12 mb-3">
-				  <p><span>Address:</span> 123 Pizza Street, Suite 456, Pizzaville, PV 78901</p>
-				</div>
-				<div class="col-md-12 mb-3">
-				  <p><span>Phone:</span> <a href="tel://1234567890">+123 456 7890</a></p>
-				</div>
-				<div class="col-md-12 mb-3">
-				  <p><span>Email:</span> <a href="mailto:order@pizzashop.com">order@pizzashop.com</a></p>
-				</div>
-				<div class="col-md-12 mb-3">
-				  <p><span>Website:</span> <a href="#">pizzashop.com</a></p>
-				</div>
-			  </div>
-			</div>
-			<div class="col-md-1"></div>
-			<!-- Form Section -->
-			<div class="col-md-6 ftco-animate">
-			  <form id="order-form" action="/submit-order" method="post" class="contact-form"> <!-- Updated method to POST -->
-				<div class="row">
-				  <div class="col-md-6">
-					<div class="form-group">
-					  <input type="text" name="Name" class="form-control" placeholder="Your Name" required>
-					</div>
-				  </div>
-				  <div class="col-md-6">
-					<div class="form-group">
-					  <input type="email" name="Email" class="form-control" placeholder="Your Email" required>
-					</div>
-				  </div>
-				</div>
-				<div class="row">
-				  <div class="col-md-6">
-					<div class="form-group">
-					  <input type="text" name="Phone" class="form-control" placeholder="Phone Number" maxlength="10" required>
-					</div>
-				  </div>
-				  <div class="col-md-6">
-					<div class="form-group">
-					  <input type="text" name="DeliveryAddress" class="form-control" placeholder="Delivery Address" required>
-					</div>
-				  </div>
-				</div>
-				<div class="form-group">
-				  <select name="PizzaSize" class="form-control" required>
-					<option value="" disabled selected style="color: white; background-color: rgb(17,16,16); font-family: monospace;">Select Pizza Size</option>
-					<option value="small" style="color: white; background-color: rgb(17,16,16);">Small</option>
-					<option value="medium" style="color: white; background-color: rgb(17,16,16);">Medium</option>
-					<option value="large" style="color: white; background-color: rgb(17,16,16);">Large</option>
-				  </select>
-				</div>
-				<div class="form-group">
-				  <select name="Toppings[]" class="form-control" required>
-					<option value="" disabled selected style="color: white; background-color: rgb(17,16,16); font-family: monospace;">Select Toppings</option>
-					<option value="pepperoni" style="color: white; background-color: rgb(17,16,16);">Pepperoni</option>
-					<option value="mushrooms" style="color: white; background-color: rgb(17,16,16);">Mushrooms</option>
-					<option value="onions" style="color: white; background-color: rgb(17,16,16);">Onions</option>
-					<option value="extra-cheese" style="color: white; background-color: rgb(17,16,16);">Extra Cheese</option>
-					<option value="black-olives" style="color: white; background-color: rgb(17,16,16);">Black Olives</option>
-				  </select>
-				</div>
-				<div class="form-group">
-				  <textarea name="SpecialInstructions" cols="30" rows="7" class="form-control" placeholder="Special Instructions" required></textarea>
-				</div>
-				<div class="form-group">
-				  <input type="submit" value="Place Order" class="btn btn-primary py-3 px-5">
-				</div>
-			  </form>
-         <!-- Pop-up notification -->
-  <div id="popup-overlay"></div>
-  <div id="popup-notification">
-    <p id="popup-message"></p>
-    <button class="popup-button" onclick="closePopup()">Done</button>
-  </div>
+  <section class="ftco-section contact-section">
+    <div class="container mt-5">
+      <div class="row block-9">
+      <!-- Title Section Centered -->
+      <div class="col-12 text-center mb-4">
+        <h2 class="h4" style="font-size: 50px;">Pizza Order Form</h2>
+      </div>
+      <!-- Contact Info -->
+      <div class="col-md-4 contact-info ftco-animate">
+        <div class="row">
+        <div class="col-md-12 mb-3">
+          <p><span>Address:</span> 123 Pizza Street, Suite 456, Pizzaville, PV 78901</p>
+        </div>
+        <div class="col-md-12 mb-3">
+          <p><span>Phone:</span> <a href="tel://1234567890">+123 456 7890</a></p>
+        </div>
+        <div class="col-md-12 mb-3">
+          <p><span>Email:</span> <a href="mailto:order@pizzashop.com">order@pizzashop.com</a></p>
+        </div>
+        <div class="col-md-12 mb-3">
+          <p><span>Website:</span> <a href="#">pizzashop.com</a></p>
+        </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+      <!-- Form Section -->
+      <div class="col-md-6 ftco-animate">
+        <form id="order-form" action="/post" method="POST" class="contact-form">
+        <div class="row">
+          <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" name="Name" class="form-control" placeholder="Your Name" required>
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div class="form-group">
+            <input type="email" name="Email" class="form-control" placeholder="Your Email" required>
+          </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" name="Phone" class="form-control" placeholder="Phone Number" maxlength="10" required>
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" name="DeliveryAddress" class="form-control" placeholder="Delivery Address" required>
+          </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <select name="PizzaSize" class="form-control" required>
+          <option value="" disabled selected style="color: white; background-color: rgb(17,16,16); font-family: monospace;">Select Pizza Size</option>
+          <option value="small" style="color: white; background-color: rgb(17,16,16);">Small</option>
+          <option value="medium" style="color: white; background-color: rgb(17,16,16);">Medium</option>
+          <option value="large" style="color: white; background-color: rgb(17,16,16);">Large</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select name="Toppings[]" class="form-control" required>
+          <option value="" disabled selected style="color: white; background-color: rgb(17,16,16); font-family: monospace;">Select Toppings</option>
+          <option value="pepperoni" style="color: white; background-color: rgb(17,16,16);">Pepperoni</option>
+          <option value="mushrooms" style="color: white; background-color: rgb(17,16,16);">Mushrooms</option>
+          <option value="onions" style="color: white; background-color: rgb(17,16,16);">Onions</option>
+          <option value="extra-cheese" style="color: white; background-color: rgb(17,16,16);">Extra Cheese</option>
+          <option value="black-olives" style="color: white; background-color: rgb(17,16,16);">Black Olives</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea name="SpecialInstructions" cols="30" rows="7" class="form-control" placeholder="Special Instructions" required></textarea>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Place Order" class="btn btn-primary py-3 px-5">
+        </div>
+        </form>
 
-  <script>
-    const form = document.getElementById('order-form');
-    const popupOverlay = document.getElementById('popup-overlay');
-    const popupNotification = document.getElementById('popup-notification');
-    const popupMessage = document.getElementById('popup-message');
+        <!-- pop-up notification -->
+        <script>
+          const form = document.getElementById('order-form');
+          const popupOverlay = document.getElementById('popup-overlay');
+          const popupNotification = document.getElementById('popup-notification');
+          const popupMessage = document.getElementById('popup-message');
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(document.getElementById('order-form'));
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(document.getElementById('order-form'));
 
-      try {
-        const response = await fetch('/submit-order', {
-          method: 'post',
-          body: new URLSearchParams(formData),
-        });
+            try {
+              const response = await fetch('/post', {
+                method: 'POST',
+                body: new URLSearchParams(formData),
+              });
 
-        const result = await response.json();
-        if (result.success) {
-          showPopup(result.message, 'success');
-        } else {
-          showPopup(result.message, 'error');
-        }
-      } catch (error) {
-        console.error('Error submitting form:', error);
-        showPopup('Your order has been submitted successfully!', 'error');
-      }
-    });
+              const result = await response.json();
+              if (result.success) {
+                // showPopup(result.message, 'success');
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "order has been added successfully!",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+              } else {
+                // showPopup(result.message, 'error');
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "order has been added successfully!",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+              }
+            } catch (error) {
+              console.error('Error submitting form:', error);
+              // showPopup('Contact data has been added successfully!', 'error');
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "order has been added successfully!",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }
+          });
 
-    function showPopup(message, type) {
-      popupMessage.textContent = message;
-      popupNotification.className = type;
-      popupNotification.style.display = 'block';  
-      popupOverlay.style.display = 'block';
-    }
+          function showPopup(message, type) {
+            popupMessage.textContent = message;
+            popupNotification.className = type;
+            popupNotification.style.display = 'block';
+            popupOverlay.style.display = 'block';
+          }
 
-    function closePopup() {
-      popupNotification.style.display = 'none';
-      popupOverlay.style.display = 'none';
-    }
-  </script>
-          <!-- pop-up notification -->
+          function closePopup() {
+            popupNotification.style.display = 'none';
+            popupOverlay.style.display = 'none';
+          }
+        </script>
+        <!-- pop-up notification -->
+      </div>
+      </div>
+    </div>
+    </section>
+   <!-- -------Order Information end ----- -->
 
-			</div>
-		  </div>
-		</div>
-	  </section>
-	 <!-- -------Order Information end ----- -->
-
-  
-    <footer class="ftco-footer ftco-section img">
-    	<div class="overlay"></div>
+<footer class="ftco-footer ftco-section img">
+      <div class="overlay"></div>
       <div class="container">
         <div class="row mb-5">
           <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
@@ -302,21 +270,21 @@
           </div>
           <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
             <div class="ftco-footer-widget mb-4">
-            	<h2 class="ftco-heading-2">Have a Questions?</h2>
-            	<div class="block-23 mb-3">
-	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-	              </ul>
-	            </div>
+              <h2 class="ftco-heading-2">Have a Questions?</h2>
+              <div class="block-23 mb-3">
+                <ul>
+                  <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                  <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                  <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 text-center">
 
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
   Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
           </div>

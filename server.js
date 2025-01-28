@@ -16,14 +16,22 @@ db.once('open', () => {
   console.log('Connected to the database!');
 });
 
+// Define schema and model for users
+const userSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true }
+});
+
+const User = mongoose.model('login', userSchema);
+
 // Define schema and model for contact
 const contactSchema = new mongoose.Schema({
   Name: String,
   Email: String,
-  Phone: String, // Changed from Number to String
+  Phone: String,
 });
 
-const Contact = mongoose.model('contacts', contactSchema); // Changed model name from Users to Contact
+const Contact = mongoose.model('contacts', contactSchema);
 
 // Serve the contact page as the root route
 app.get('/', (req, res) => {
@@ -36,7 +44,7 @@ app.post('/post', async (req, res) => {
   const { Name, Email, Phone } = req.body;
 
   try {
-    const user = new Contact({ // Updated to use Contact model
+    const user = new Contact({
       Name,
       Email,
       Phone,
@@ -46,12 +54,12 @@ app.post('/post', async (req, res) => {
     console.log('Contact saved:', user);
     res.send('Contact data has been added successfully!');
   } catch (error) {
-    console.error('Error saving contact:', error); // Improved error logging
+    console.error('Error saving contact:', error);
     res.status(500).send('Error saving contact data. Please try again later.');
   }
 });
 
-// Define schema and model for orders
+  // Define schema and model for orders
 const orderSchema = new mongoose.Schema({
   Name: String,
   Email: String,
